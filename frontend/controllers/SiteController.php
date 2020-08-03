@@ -50,7 +50,10 @@ class SiteController extends Controller
             ],
         ];
     }
-
+    public function actionCountryView($country)
+    {
+        echo "<pre>"; print_r($country);die();
+    }
     /**
      * {@inheritdoc}
      */
