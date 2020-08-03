@@ -51,7 +51,11 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'country/<country:\w+>'=>'site/country',
+//                '/<country:\D+>'=>'site/country',
+                [
+                    'class' => 'frontend\modules\url\components\CountryUrlRule',
+                    // ...настройка других параметров правила...
+                ],
             ],
 
         ],

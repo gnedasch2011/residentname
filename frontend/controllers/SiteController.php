@@ -2,6 +2,8 @@
 
 namespace frontend\controllers;
 
+use app\models\residentname\Country;
+use app\models\residentname\CountryDeclinesNouns;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -53,12 +55,23 @@ class SiteController extends Controller
 //    }
 
 
-    public function actionCountry($country)
+    public function actionCountry($url)
     {
+        $country = Country::find()
+            ->where(['country.id' => $url->id])
+            ->joinWith('countryDeclinesNouns')
+            ->one();
+
         echo "<pre>";
         print_r($country);
         die();
+//        echo "<pre>";
+//        print_r($country);
+//        die();
     }
+
+
+
 
     /**
      * {@inheritdoc}
