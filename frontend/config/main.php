@@ -51,7 +51,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '<city:\d+>' => '/site/site/country-view',
+                'country/<country:\w+>'=>'site/country',
             ],
 
         ],
