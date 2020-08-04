@@ -58,4 +58,5 @@ class Country extends \yii\db\ActiveRecord
     {
         return $this->hasMany(CountryDeclinesNouns::className(), ['country_id' => 'id']);
     }
+
 }
