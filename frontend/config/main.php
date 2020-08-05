@@ -52,6 +52,7 @@ return [
             'showScriptName' => false,
             'rules' => [
                 'countries'=> 'residentname/countries-list',
+                'cities'=> 'residentname/cities-list',
                 [
                'class' => 'frontend\modules\url\components\CountryUrlRule',
                 ],

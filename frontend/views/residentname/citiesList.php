@@ -16,10 +16,9 @@
 <table>
     <thead>
     <tr>
-        <?php if (isset($country->img)): ?>
-            <th>#</th>
-        <?php endif; ?>
-        <th colspan="2">Страна</th>
+        <th>#</th>
+        <th>Город</th>
+        <th>Страна</th>
         <th>Мужчины</th>
         <th>Женщины</th>
         <th>Граждане</th>
@@ -32,14 +31,14 @@
     <?php foreach ($countries as $country): ?>
         <tr>
             <td class="text-muted small"><?= $count; ?></td>
-                <td>
-                    <img src="/images/residentname/flags/<?= $country->img; ?>"
-                         alt="<?= $country->name; ?>"
-                         width="16" height="16">
-                    <?= $country->index_name; ?>
-                </td>
             <td>
                 <a href="<?= $country->url->url; ?>"><?= $country->name; ?></a>
+            </td>
+            <td>
+                <img src="<?= $country->country->imgFlug; ?>"
+                     alt="<?= $country->name; ?>"
+                      width="16" height="16">
+                <?= $country->country->name; ?>
             </td>
             <td><?= $country->man; ?></td>
             <td><?= $country->woman; ?></td>

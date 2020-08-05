@@ -1,5 +1,5 @@
-<h1>Жители <?= $place->genitive->value; ?> </h1>
-<table class="table">
+<h1>Название жителей <?= $place->genitive->value; ?> </h1>
+<table class="table table-striped">
     <tr>
         <th>Падеж</th>
         <th>Вопрос</th>
@@ -26,10 +26,9 @@
 <br>
 <br>
 
-
-<?php if (isset($place->cities)): ?>
-
-    <table class="table">
+<?php if (isset($place->cities) && !empty($place->cities)): ?>
+        <h2>Города <?= $place->genitive->value; ?></h2>
+    <table class="table table-striped">
         <thead>
         <tr>
             <th>Город</th>
@@ -52,6 +51,3 @@
     </table>
 
 <?php endif; ?>
-
-
-

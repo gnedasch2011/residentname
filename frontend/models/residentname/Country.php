@@ -16,6 +16,9 @@ namespace app\models\residentname;
  */
 class Country extends \yii\db\ActiveRecord
 {
+
+    const IMG_PATH_FLUG = 'images/residentname/flags/';
+
     /**
      * {@inheritdoc}
      */
@@ -76,9 +79,14 @@ class Country extends \yii\db\ActiveRecord
                 'cases_id' => 2,
             ]);
     }
-    
-     public function getCities()
-         {
-             return $this->hasMany(City::className(), ['country_id' => 'id']);
-         }
+
+    public function getCities()
+    {
+        return $this->hasMany(City::className(), ['country_id' => 'id']);
+    }
+
+    public function getImgFlug()
+    {
+        return self::IMG_PATH_FLUG . $this->img;
+    }
 }

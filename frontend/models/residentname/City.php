@@ -17,6 +17,7 @@ use Yii;
  */
 class City extends \yii\db\ActiveRecord
 {
+
     /**
      * {@inheritdoc}
      */
@@ -77,5 +78,13 @@ class City extends \yii\db\ActiveRecord
                 'cases_id' => 2,
             ]);
     }
+
+
+    public function getCountry()
+    {
+        return $this->hasOne(Country::className(), ['id' => 'country_id']);
+    }
+
+
 
 }

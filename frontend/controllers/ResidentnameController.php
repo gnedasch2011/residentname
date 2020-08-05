@@ -12,25 +12,57 @@ namespace frontend\controllers;
 use app\models\residentname\Cases;
 use app\models\residentname\City;
 use app\models\residentname\Country;
+use yii\helpers\Url;
 use yii\web\Controller;
 
 class ResidentnameController extends Controller
 {
     public function actionPlaceView($url)
     {
+
         if ($url->route == 'city') {
             $place = City::find()
                 ->where(['city.id' => $url->param])
                 ->one();
+
+            $this->view->params['breadcrumbs'] = [
+                [
+                    'label' => 'Города мира',
+                    'url' => 'cities',
+                ],
+            ];
+
         }
 
         if ($url->route == 'country') {
             $place = Country::find()
                 ->where(['country.id' => $url->param])
                 ->one();
+
+            $this->view->params['breadcrumbs'] = [
+                [
+                    'label' => 'Страны мира',
+                    'url' => 'countries',
+                ]
+            ];
         }
 
-        $nounsesGroup = [];
+
+        //Title:
+
+        $this->view->title = "Как называют жителей {$place->genitive->value} | Правильное название жителей города {$place->genitive->value}";
+
+        $siteName = \Yii::$app->params['siteName'];
+
+        \Yii::$app->view->registerMetaTag([
+            'name' => 'description',
+            'content' => "Как называют жителей {$place->genitive->value} | Официальные названия на сайте {$siteName}",
+        ]);
+
+        $this->view->params['breadcrumbs'][] = [
+            'label' => $place->name
+        ];
+
 
         $cases = Cases::find()->asArray()->all();
 
@@ -55,6 +87,20 @@ class ResidentnameController extends Controller
 
         return $this->render('countriesList', [
             'countries' => $countries,
+        ]);
+    }
+
+    //Названия жителей городов
+    public function actionCitiesList()
+    {
+
+        $countries = City::find()
+            ->orderBy('name asc')
+            ->all();
+
+        return $this->render('citiesList', [
+            'countries' => $countries,
+            'h1' => 'Названия жителей городов',
         ]);
     }
 }
