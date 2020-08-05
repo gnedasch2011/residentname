@@ -80,11 +80,21 @@ class City extends \yii\db\ActiveRecord
     }
 
 
+    public function getImgFlug()
+    {
+        return $this->country->imgFlug;
+
+    }
+
+    public function getCountryName()
+    {
+        return $this->country->name;
+    }
+
     public function getCountry()
     {
         return $this->hasOne(Country::className(), ['id' => 'country_id']);
     }
-
 
 
 }

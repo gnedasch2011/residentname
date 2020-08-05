@@ -1,4 +1,30 @@
 <h1>Название жителей <?= $place->genitive->value; ?> </h1>
+
+<p>Страна Австрия имеет полное официальное название Австрийская Республика и буквенные коды AT и
+    AUT. Официальные названия граждан Австрии:</p>
+
+<div class="row">
+
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center">
+        <h4><?= $place->man ;?></h4>
+        <p>(<?= mb_strlen($place->man) ;?> букв)</p>
+        <img width="80px" src="images\residentname\main\man.png" alt="">
+        <p>мужчина</p>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center">
+        <h4><?= $place->woman ;?></h4>
+        <p>(<?= mb_strlen($place->woman) ;?> букв)</p>
+        <img width="100px" src="images\residentname\main\woman.png" alt="">
+        <p>женщина</p>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center">
+        <h4><?= $place->townspeople ;?></h4>
+        <p>(<?= mb_strlen($place->townspeople) ;?> букв)</p>
+        <img width="100px" src="images\residentname\main\many_people.png" alt="">
+        <p>горожане</p>
+    </div>
+</div>
+
 <table class="table table-striped">
     <tr>
         <th>Падеж</th>
@@ -10,6 +36,7 @@
         <th>Жители</th>
     </tr>
     <tbody>
+
     <?php foreach ($nounsesGroup as $caseName => $casesGroup): ?>
         <tr>
             <th scope="row"><?= $caseName; ?></th>
@@ -22,12 +49,13 @@
         </tr>
     <?php endforeach; ?>
 </table>
+
 <br>
 <br>
 <br>
 
 <?php if (isset($place->cities) && !empty($place->cities)): ?>
-        <h2>Города <?= $place->genitive->value; ?></h2>
+    <h2>Города <?= $place->genitive->value; ?></h2>
     <table class="table table-striped">
         <thead>
         <tr>

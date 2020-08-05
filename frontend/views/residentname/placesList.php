@@ -13,16 +13,14 @@
     }
 </style>
 
-<table>
+<table class="table table-striped">
     <thead>
     <tr>
-        <?php if (isset($type)&& $type =='country'): ?>
-            <th>#</th>
-        <?php endif; ?>
-        <th colspan="2">Страна</th>
-
         <th>#</th>
-        <th>Город</th>
+
+        <?php if (!$country): ?>
+            <th>Город</th>
+        <?php endif; ?>
         <th>Страна</th>
         <th>Мужчины</th>
         <th>Женщины</th>
@@ -33,21 +31,34 @@
     <?php
     $count = 1;
     ?>
-    <?php foreach ($countries as $country): ?>
+    <?php foreach ($places as $place): ?>
         <tr>
             <td class="text-muted small"><?= $count; ?></td>
+
+            <?php if (!$country): ?>
+                <td>
+                    <a href="<?= $place->url->url; ?>"><?= $place->name; ?></a>
+                </td>
+            <?php endif; ?>
+
             <td>
-                <a href="<?= $country->url->url; ?>"><?= $country->name; ?></a>
+                <?php if ($country): ?>
+                    <img src="<?= $place->imgFlug; ?>"
+                         alt="<?= $place->name; ?>"
+                         width="16" height="16">
+                    <a href="<?= $place->url->url; ?>"><?= $place->name; ?></a>
+                <?php else: ?>
+                    <img src="<?= $place->imgFlug; ?>"
+                         alt="<?= $place->country->name; ?>"
+                         width="16" height="16">
+                    <a href="<?= $place->country->url->url; ?>"><?= $place->country->name; ?></a>
+                <?php endif; ?>
+
             </td>
-            <td>
-                <img src="<?= $country->country->imgFlug; ?>"
-                     alt="<?= $country->name; ?>"
-                      width="16" height="16">
-                <?= $country->country->name; ?>
-            </td>
-            <td><?= $country->man; ?></td>
-            <td><?= $country->woman; ?></td>
-            <td><?= $country->townspeople; ?></td>
+
+            <td><?= $place->man; ?></td>
+            <td><?= $place->woman; ?></td>
+            <td><?= $place->townspeople; ?></td>
         </tr>
         <?php
         $count++;

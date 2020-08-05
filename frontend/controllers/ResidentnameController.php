@@ -60,7 +60,7 @@ class ResidentnameController extends Controller
         ]);
 
         $this->view->params['breadcrumbs'][] = [
-            'label' > $place->name
+            'label' => $place->name,
         ];
 
         $cases = Cases::find()->asArray()->all();
@@ -84,10 +84,11 @@ class ResidentnameController extends Controller
     {
         $places = Country::find()->all();
 
+
         return $this->render('placesList', [
             'places' => $places,
             'h1' => 'Названия жителей стран',
-            'type' => 'country',
+            'country' => true,
         ]);
     }
 
@@ -99,10 +100,14 @@ class ResidentnameController extends Controller
             ->orderBy('name asc')
             ->all();
 
-        return $this->render('citiesList', [
+
+        return $this->render('placesList', [
             'places' => $places,
             'h1' => 'Названия жителей городов',
-            'type' => 'city',
+            'country' => false,
         ]);
     }
+
+
+
 }

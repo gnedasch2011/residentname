@@ -84,7 +84,7 @@ AppAsset::register($this);
             height: 350px;
             background-size: contain;
             width: 100%;"
-                 src="https://laukar.com/data/190420/11531364388089123.jpeg" alt="">
+                 src="https://pbs.twimg.com/profile_banners/2843789281/1412698253/1500x500" alt="">
         </div>
     </div>
 

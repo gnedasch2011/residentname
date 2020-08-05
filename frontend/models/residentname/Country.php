@@ -89,4 +89,10 @@ class Country extends \yii\db\ActiveRecord
     {
         return self::IMG_PATH_FLUG . $this->img;
     }
+
+    public function getCountryName()
+    {
+        return $this->name;
+    }
+
 }
