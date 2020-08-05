@@ -54,9 +54,34 @@ class Country extends \yii\db\ActiveRecord
         ];
     }
 
-    public function getCountryDeclinesNouns()
+    public function getNounses()
     {
-        return $this->hasMany(CountryDeclinesNouns::className(), ['country_id' => 'id']);
+        return $this->hasMany(NounseValue::className(), ['item_id' => 'id'])
+            ->where([
+                'kinds_of_nouns_id' => 1
+            ]);
     }
 
+    public function getUrl()
+    {
+        return $this->hasOne(Url::className(), ['param' => 'id'])
+            ->where(['route' => 'country']);
+    }
+
+    //Родительный падеж
+    public function getGenitive()
+    {
+        return $this->hasOne(NounseValue::className(), ['item_id' => 'id'])
+            ->where([
+                'kinds_of_nouns_id' => 1,
+                'declines_nouns_id' => 1,
+                'cases_id' => 2,
+
+            ]);
+        echo "<pre>";
+        print_r($this);
+        die();
+        return 'genetive';
+//
+    }
 }

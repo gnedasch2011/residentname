@@ -51,10 +51,9 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-//                '/<country:\D+>'=>'site/country',
+                'countries'=> 'residentname/countries-list',
                 [
-                    'class' => 'frontend\modules\url\components\CountryUrlRule',
-                    // ...настройка других параметров правила...
+               'class' => 'frontend\modules\url\components\CountryUrlRule',
                 ],
             ],
 

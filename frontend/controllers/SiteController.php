@@ -59,7 +59,6 @@ class SiteController extends Controller
     {
         $country = Country::find()
             ->where(['country.id' => $url->id])
-            ->joinWith('countryDeclinesNouns')
             ->one();
 
         echo "<pre>";

@@ -21,7 +21,7 @@ class CountryUrlRule extends BaseObject implements UrlRuleInterface
     }
 
     public function parseRequest($manager, $request)
-    {
+    {   
         $pathInfo = $request->getPathInfo();
         $pattern = "%([a-zA-Z0-9-]+)?$%";
 
@@ -35,7 +35,7 @@ class CountryUrlRule extends BaseObject implements UrlRuleInterface
                 return false;
             }
 
-            return ['site/' . $url->route, [ // (Примечание 3)
+            return ['residentname/' . $url->route, [ // (Примечание 3)
                 'url' => $url
             ]];
         }
