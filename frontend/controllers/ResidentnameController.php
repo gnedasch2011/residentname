@@ -60,9 +60,8 @@ class ResidentnameController extends Controller
         ]);
 
         $this->view->params['breadcrumbs'][] = [
-            'label' => $place->name
+            'label' > $place->name
         ];
-
 
         $cases = Cases::find()->asArray()->all();
 
@@ -83,10 +82,12 @@ class ResidentnameController extends Controller
     //Названия жителей стран мира
     public function actionCountriesList()
     {
-        $countries = Country::find()->all();
+        $places = Country::find()->all();
 
-        return $this->render('countriesList', [
-            'countries' => $countries,
+        return $this->render('placesList', [
+            'places' => $places,
+            'h1' => 'Названия жителей стран',
+            'type' => 'country',
         ]);
     }
 
@@ -94,13 +95,14 @@ class ResidentnameController extends Controller
     public function actionCitiesList()
     {
 
-        $countries = City::find()
+        $places = City::find()
             ->orderBy('name asc')
             ->all();
 
         return $this->render('citiesList', [
-            'countries' => $countries,
+            'places' => $places,
             'h1' => 'Названия жителей городов',
+            'type' => 'city',
         ]);
     }
 }

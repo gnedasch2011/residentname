@@ -2,6 +2,14 @@ GET http://residentname.loc/cities
 Accept: */*
 Cache-Control: no-cache
 
+<> 2020-08-05T031043.200.html
+
+###
+
+GET http://residentname.loc/cities
+Accept: */*
+Cache-Control: no-cache
+
 <> 2020-08-05T021216.500.html
 
 ###
@@ -383,14 +391,6 @@ Accept: */*
 Cache-Control: no-cache
 
 <> 2020-08-05T094119.200.html
-
-###
-
-GET http://residentname.loc/zhiteli-abhazii
-Accept: */*
-Cache-Control: no-cache
-
-<> 2020-08-05T093947.200.html
 
 ###
 
