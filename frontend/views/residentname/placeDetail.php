@@ -1,5 +1,4 @@
-<!--<h1>Жители --><? //= $country->genitive->value; ?><!-- </h1>-->
-
+<h1>Жители <?= $place->genitive->value; ?> </h1>
 <table class="table">
     <tr>
         <th>Падеж</th>
@@ -23,5 +22,36 @@
         </tr>
     <?php endforeach; ?>
 </table>
+<br>
+<br>
+<br>
 
-<!--Именительный	что?	Белиз	кто?	белизец	белизка	белизцы?-->
+
+<?php if (isset($place->cities)): ?>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Город</th>
+            <th>Мужчины</th>
+            <th>Женщины</th>
+            <th>Граждане</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <?php foreach ($place->cities as $city): ?>
+            <tr>
+                <th scope="row"><a href="<?= $city->url->url; ?>"><?= $city->name; ?></a></th>
+                <td><?= $city->man; ?></td>
+                <td><?= $city->woman; ?></td>
+                <td><?= $city->townspeople; ?></td>
+            </tr>
+        <?php endforeach; ?>
+
+    </table>
+
+<?php endif; ?>
+
+
+

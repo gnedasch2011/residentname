@@ -35,7 +35,8 @@ class CountryUrlRule extends BaseObject implements UrlRuleInterface
                 return false;
             }
 
-            return ['residentname/' . $url->route, [ // (Примечание 3)
+
+            return ['residentname/place-view', [ // (Примечание 3)
                 'url' => $url
             ]];
         }

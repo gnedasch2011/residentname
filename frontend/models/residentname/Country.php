@@ -2,8 +2,6 @@
 
 namespace app\models\residentname;
 
-use Yii;
-
 /**
  * This is the model class for table "country".
  *
@@ -76,12 +74,11 @@ class Country extends \yii\db\ActiveRecord
                 'kinds_of_nouns_id' => 1,
                 'declines_nouns_id' => 1,
                 'cases_id' => 2,
-
             ]);
-        echo "<pre>";
-        print_r($this);
-        die();
-        return 'genetive';
-//
     }
+    
+     public function getCities()
+         {
+             return $this->hasMany(City::className(), ['country_id' => 'id']);
+         }
 }
