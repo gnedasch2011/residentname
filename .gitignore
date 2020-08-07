@@ -44,5 +44,6 @@ phpunit.phar
 /runtime/*
 /.idea/httpRequests*\
 runtime/*
+frontend/runtime/*
 
 
