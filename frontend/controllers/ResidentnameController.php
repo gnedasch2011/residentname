@@ -19,7 +19,7 @@ class ResidentnameController extends Controller
 {
     public function actionPlaceView($url)
     {
-
+      
         if ($url->route == 'city') {
             $place = City::find()
                 ->where(['city.id' => $url->param])
@@ -95,12 +95,11 @@ class ResidentnameController extends Controller
     //Названия жителей городов
     public function actionCitiesList()
     {
-
         $places = City::find()
             ->orderBy('name asc')
             ->all();
 
-
+     
         return $this->render('placesList', [
             'places' => $places,
             'h1' => 'Названия жителей городов',

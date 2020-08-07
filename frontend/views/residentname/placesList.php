@@ -12,7 +12,6 @@
         padding: 5px;
     }
 </style>
-
 <table class="table table-striped">
     <thead>
     <tr>
@@ -34,8 +33,8 @@
     <?php foreach ($places as $place): ?>
         <tr>
             <td class="text-muted small"><?= $count; ?></td>
-
-            <?php if (!$country): ?>
+   
+            <?php if (!$country && isset($place->url->url)): ?>
                 <td>
                     <a href="<?= $place->url->url; ?>"><?= $place->name; ?></a>
                 </td>

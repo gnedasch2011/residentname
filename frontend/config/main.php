@@ -14,7 +14,7 @@ return [
     'modules' => [
         'debug' => [
             'class' => 'yii\debug\Module',
-            'allowedIPs' => ['1.2.3.4', '127.0.0.1', '::1']
+            'allowedIPs' => ['1.2.3.4', '127.0.0.1', '::1', '*']
         ],
         'gii' => [
             'class' => 'yii\gii\Module',
@@ -51,8 +51,8 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'countries'=> 'residentname/countries-list',
                 'cities'=> 'residentname/cities-list',
+                'countries'=> 'residentname/countries-list',
                 [
                'class' => 'frontend\modules\url\components\CountryUrlRule',
                 ],
