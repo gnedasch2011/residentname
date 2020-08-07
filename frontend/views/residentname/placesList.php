@@ -11,22 +11,7 @@
     table th {
         padding: 5px;
     }
-
-    .resident li {
-        display: inline-block; /* Отображать как строчный элемент */
-    }
 </style>
-
-<ul class="resident">
-    <?php foreach (['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ч', 'Ш', 'Э', 'Ю', 'Я'] as $spell): ?>
-        <li>
-            <p><?= $spell; ?></p>
-        </li>
-
-    <?php endforeach; ?>
-
-</ul>
-
 <table class="table table-striped">
     <thead>
     <tr>
@@ -48,8 +33,8 @@
     <?php foreach ($places as $place): ?>
         <tr>
             <td class="text-muted small"><?= $count; ?></td>
-
-            <?php if (!$country): ?>
+   
+            <?php if (!$country && isset($place->url->url)): ?>
                 <td>
                     <a href="<?= $place->url->url; ?>"><?= $place->name; ?></a>
                 </td>

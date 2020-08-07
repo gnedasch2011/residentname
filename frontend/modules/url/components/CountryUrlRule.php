@@ -24,7 +24,7 @@ class CountryUrlRule extends BaseObject implements UrlRuleInterface
     {   
         $pathInfo = $request->getPathInfo();
         $pattern = "%([a-zA-Z0-9-]+)?$%";
-
+           
         if (preg_match($pattern, $pathInfo, $matches)) {
 
             if (count($matches) != 2) { // условие для выхода (Примечание 1)
@@ -36,7 +36,7 @@ class CountryUrlRule extends BaseObject implements UrlRuleInterface
             }
 
 
-            return ['residentname/place-view', [ // (Примечание 3)
+            return ['/residentname/place-view', [ // (Примечание 3)
                 'url' => $url
             ]];
         }
