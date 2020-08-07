@@ -11,7 +11,21 @@
     table th {
         padding: 5px;
     }
+
+    .resident li {
+        display: inline-block; /* Отображать как строчный элемент */
+    }
 </style>
+
+<ul class="resident">
+    <?php foreach (['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ч', 'Ш', 'Э', 'Ю', 'Я'] as $spell): ?>
+        <li>
+            <p><?= $spell; ?></p>
+        </li>
+
+    <?php endforeach; ?>
+
+</ul>
 
 <table class="table table-striped">
     <thead>
