@@ -12,6 +12,7 @@ namespace frontend\controllers;
 use app\models\residentname\Cases;
 use app\models\residentname\City;
 use app\models\residentname\Country;
+use yii\helpers\ArrayHelper;
 use yii\helpers\BaseInflector;
 use yii\helpers\Url;
 use yii\web\Controller;
@@ -104,6 +105,7 @@ class ResidentnameController extends Controller
         ]);
 
 
+
         return $this->render('placesList', [
             'places' => $places,
             'h1' => 'Названия жителей стран',
@@ -133,12 +135,19 @@ class ResidentnameController extends Controller
             'content' => "Как называют жителей городов мира",
         ]);
 
+        $citySpell = \app\models\residentname\Url::find()
+            ->where(['route'=>'search-city'])
+            ->all()
+        ;
+
+        $cityGroupSpell = ArrayHelper::map($citySpell, 'param', 'url');
 
         return $this->render('placesList', [
             'places' => $places,
             'h1' => 'Названия жителей городов',
             'country' => false,
-            'cacheName' => $cacheName . '_table'
+            'cacheName' => $cacheName . '_table',
+            'cityGroupSpell' => $cityGroupSpell,
         ]);
     }
 

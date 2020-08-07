@@ -19,11 +19,11 @@
     }
 </style>
 
-<?php if ($country): ?>
+<?php if (!$country && isset($cityGroupSpell)): ?>
     <ul class="liInline">
-        <?php foreach (['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ч', 'Ш', 'Э', 'Ю', 'Я'] as $spell): ?>
+        <?php foreach ($cityGroupSpell as $spell => $url): ?>
             <li>
-                <a href="/countriesSpell"><?= $spell; ?></a>
+                <a href="/<?= $url; ?>"><?= $spell; ?></a>
             </li>
         <?php endforeach; ?>
     </ul>
