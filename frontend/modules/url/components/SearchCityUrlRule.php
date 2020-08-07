@@ -12,7 +12,7 @@ use app\models\residentname\Url;
 use yii\web\UrlRuleInterface;
 use yii\base\BaseObject;
 
-class CountryUrlRule extends BaseObject implements UrlRuleInterface
+class SearchCityUrlRule extends BaseObject implements UrlRuleInterface
 {
 
     public function createUrl($manager, $route, $params)
@@ -30,17 +30,17 @@ class CountryUrlRule extends BaseObject implements UrlRuleInterface
             if (count($matches) != 2) { // условие для выхода (Примечание 1)
                 return false;
             }
-        
+
             if (($url = Url::find()
                     ->where([
                         'url' => $matches[0],
-                        'route' => ['city', 'country']
+                        'route' => ['search-city']
                     ])
                     ->one()) == NULL) { // (Примечание 2)
-               return false;
+                return false;
             }
 
-            return ['/residentname/place-view', [ // (Примечание 3)
+            return ['/residentname/search-city-by-spell', [ // (Примечание 3)
                 'url' => $url
             ]];
         }

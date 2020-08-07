@@ -51,12 +51,16 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+
                 'countries' => 'residentname/countries-list',
                 'cities' => 'residentname/cities-list',
-                
+                [
+                    'class' => 'frontend\modules\url\components\SearchCityUrlRule',
+                ],
                 [
                     'class' => 'frontend\modules\url\components\CountryUrlRule',
                 ],
+
             ],
 
         ],

@@ -12,14 +12,16 @@ namespace frontend\controllers;
 use app\models\residentname\Cases;
 use app\models\residentname\City;
 use app\models\residentname\Country;
+use yii\helpers\BaseInflector;
 use yii\helpers\Url;
 use yii\web\Controller;
 
 class ResidentnameController extends Controller
 {
+    //детальная и страны и города
     public function actionPlaceView($url)
     {
-      
+
         if ($url->route == 'city') {
             $place = City::find()
                 ->where(['city.id' => $url->param])
@@ -79,34 +81,107 @@ class ResidentnameController extends Controller
         ]);
     }
 
+
     //Названия жителей стран мира
     public function actionCountriesList()
     {
-        $places = Country::find()->all();
+        $cacheName = 'CountriesList';
+        $cache = \Yii::$app->cache;
+
+        $places = $cache->getOrSet('CountriesList', function () {
+            return $places = Country::find()->all();
+        });
+
+
+        //Title:
+
+        $this->view->title = "Как называют жителей стран мира";
+
+
+        \Yii::$app->view->registerMetaTag([
+            'name' => 'description',
+            'content' => "Как называют жителей стран мира",
+        ]);
 
 
         return $this->render('placesList', [
             'places' => $places,
             'h1' => 'Названия жителей стран',
             'country' => true,
+            'cacheName' => $cacheName . '_table'
         ]);
     }
 
     //Названия жителей городов
     public function actionCitiesList()
     {
-        $places = City::find()
-            ->orderBy('name asc')
-            ->all();
+        $cacheName = 'CitiesList';
+        $cache = \Yii::$app->cache;
 
-     
+        $places = $cache->getOrSet($cacheName, function () {
+
+            return $places = City::find()
+                ->orderBy('name asc')
+                ->all();;
+        });
+
+
+        $this->view->title = "Как называют жителей городов мира";
+
+        \Yii::$app->view->registerMetaTag([
+            'name' => 'description',
+            'content' => "Как называют жителей городов мира",
+        ]);
+
+
         return $this->render('placesList', [
             'places' => $places,
             'h1' => 'Названия жителей городов',
             'country' => false,
+            'cacheName' => $cacheName . '_table'
         ]);
     }
 
 
+    public function actionSearchCityBySpell($url)
+    {
+//        $id = 1232;
+
+//        foreach (['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ч', 'Ш', 'Э', 'Ю', 'Я'] as $spell) {
+//            $space = '	';
+//            echo strtolower($id . $space . BaseInflector::transliterate("goroda-na-bukvu-" . $spell)) . $space . $spell . $space . 'search-city' . PHP_EOL;
+//            $id++;
+//        }
+//        die();
+
+        $cache = \Yii::$app->cache;
+        $cacheName = 'CitiesList' . $url->param;
+
+
+        $condition = $url->param . "%";
+
+        $places = $cache->getOrSet($cacheName, function () use ($condition) {
+
+            return $places = City::find()
+                ->orderBy('name asc')
+                ->where(['like', 'name', $condition, false])
+                ->all();
+        });
+
+        $this->view->title = "Как называют жителей городов на букву " . $url->param;
+
+        \Yii::$app->view->registerMetaTag([
+            'name' => 'description',
+            'content' => "Как называют жителей городов на букву " . $url->param
+        ]);
+
+
+        return $this->render('placesList', [
+            'places' => $places,
+            'h1' => 'Названия жителей городов',
+            'country' => false,
+            'cacheName' => $cacheName,
+        ]);
+    }
 
 }
