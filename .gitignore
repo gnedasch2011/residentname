@@ -42,6 +42,7 @@ phpunit.phar
 /backend/web/index-test.php
 /backend/web/robots.tx
 /runtime/*
-/.idea/httpRequests*
+/.idea/httpRequests*\
+runtime/*
 
 
