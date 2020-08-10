@@ -34,7 +34,6 @@
         <thead>
         <tr>
             <th>#</th>
-
             <?php if (!$country): ?>
                 <th>Город</th>
             <?php endif; ?>

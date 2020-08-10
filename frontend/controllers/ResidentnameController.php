@@ -187,7 +187,7 @@ class ResidentnameController extends Controller
 
         return $this->render('placesList', [
             'places' => $places,
-            'h1' => 'Названия жителей городов',
+            'h1' => "Как называют жителей городов на букву " . $url->param,
             'country' => false,
             'cacheName' => $cacheName,
         ]);
