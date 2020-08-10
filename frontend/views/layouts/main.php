@@ -59,11 +59,12 @@ AppAsset::register($this);
 
                 $model = new \frontend\models\residentname\form\SearchPlace();
                 $form = ActiveForm::begin([
+                    'action' => '/residentname/search-city-by-spell-form',
                     'options' => ['class' => 'navbar-form navbar-left'],
                 ]) ?>
 
                 <div class="form-group">
-                    <?= $form->field($model, 'name')
+                    <?= $form->field($model, 'url')
                         ->textInput([
                             'class' => 'form-control',
                             'placeholder' => 'Поиск',
@@ -116,7 +117,7 @@ AppAsset::register($this);
 </html>
 <?php $this->endPage() ?>
 <style>
-    .buttonCenter{
+    .buttonCenter {
         margin-bottom: 10px;
     }
 </style>

@@ -12,6 +12,7 @@ namespace frontend\controllers;
 use app\models\residentname\Cases;
 use app\models\residentname\City;
 use app\models\residentname\Country;
+use frontend\models\residentname\form\SearchPlace;
 use yii\helpers\ArrayHelper;
 use yii\helpers\BaseInflector;
 use yii\helpers\Url;
@@ -105,7 +106,6 @@ class ResidentnameController extends Controller
         ]);
 
 
-
         return $this->render('placesList', [
             'places' => $places,
             'h1' => 'Названия жителей стран',
@@ -136,9 +136,8 @@ class ResidentnameController extends Controller
         ]);
 
         $citySpell = \app\models\residentname\Url::find()
-            ->where(['route'=>'search-city'])
-            ->all()
-        ;
+            ->where(['route' => 'search-city'])
+            ->all();
 
         $cityGroupSpell = ArrayHelper::map($citySpell, 'param', 'url');
 
@@ -154,14 +153,6 @@ class ResidentnameController extends Controller
 
     public function actionSearchCityBySpell($url)
     {
-//        $id = 1232;
-
-//        foreach (['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ч', 'Ш', 'Э', 'Ю', 'Я'] as $spell) {
-//            $space = '	';
-//            echo strtolower($id . $space . BaseInflector::transliterate("goroda-na-bukvu-" . $spell)) . $space . $spell . $space . 'search-city' . PHP_EOL;
-//            $id++;
-//        }
-//        die();
 
         $cache = \Yii::$app->cache;
         $cacheName = 'CitiesList' . $url->param;
@@ -190,6 +181,38 @@ class ResidentnameController extends Controller
             'h1' => "Как называют жителей городов на букву " . $url->param,
             'country' => false,
             'cacheName' => $cacheName,
+        ]);
+    }
+
+
+    public function actionSearchCityBySpellForm()
+    {
+
+        $searchModel = new SearchPlace();
+        $val = \Yii::$app->request->post('url');
+//        Yii::$app->request->enableCookieValidation=false;
+//        Yii::$app->request->enableCookieValidation=false;
+//        $config['components']['request']['enableCookieValidation'] = false;
+//        $config['components']['request']['enableCsrfValidation'] = false;
+
+        if ($searchModel->load(\Yii::$app->request->post()) && $searchModel->validate()) {
+            $places = City::find()
+                ->orderBy('name asc')
+                ->where(['like', 'name', $searchModel->url])
+                ->all();
+        }
+
+        $this->view->title = "Поиск городов и стран";
+
+        \Yii::$app->view->registerMetaTag([
+            'name' => 'description',
+            'content' => "Поиск городов и стран",
+        ]);
+
+        return $this->render('placesList', [
+            'places' => $places,
+            'h1' => "Поиск городов",
+            'country' => false,
         ]);
     }
 

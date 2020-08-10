@@ -12,21 +12,20 @@ use yii\base\Model;
 
 class SearchPlace extends Model
 {
-    public $name;
+    public $url;
 
     public function rules()
     {
         return [
-            ['name', 'filter', 'filter' => 'trim'],
-            ['name', 'required'],
-            ['name', 'string', 'max' => 255],
+            ['url', 'filter', 'filter' => 'trim'],
+            ['url', 'string', 'max' => 255],
         ];
     }
 
     public function attributeLabels()
     {
         return [
-            'name' => 'Имя',
+            'url' => 'url',
         ];
     }
 }
