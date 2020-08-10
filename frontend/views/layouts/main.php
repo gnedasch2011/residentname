@@ -53,12 +53,27 @@ AppAsset::register($this);
                     </li>
                     <li><a href="/cities">Города</a></li>
                 </ul>
-                <form class="navbar-form navbar-left">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
+                <?php
+
+                use yii\widgets\ActiveForm;
+
+                $model = new \frontend\models\residentname\form\SearchPlace();
+                $form = ActiveForm::begin([
+                    'options' => ['class' => 'navbar-form navbar-left'],
+                ]) ?>
+
+                <div class="form-group">
+                    <?= $form->field($model, 'name')
+                        ->textInput([
+                            'class' => 'form-control',
+                            'placeholder' => 'Поиск',
+                        ])->label('');
+                    ?>
+                </div>
+
+                <?= Html::submitButton('Найти', ['class' => 'btn btn-default buttonCenter']) ?>
+
+                <?php ActiveForm::end() ?>
 
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -100,3 +115,8 @@ AppAsset::register($this);
 </body>
 </html>
 <?php $this->endPage() ?>
+<style>
+    .buttonCenter{
+        margin-bottom: 10px;
+    }
+</style>
