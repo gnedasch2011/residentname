@@ -83,7 +83,6 @@ class ResidentnameController extends Controller
         ]);
     }
 
-
     //Названия жителей стран мира
     public function actionCountriesList()
     {
@@ -152,7 +151,6 @@ class ResidentnameController extends Controller
         ]);
     }
 
-
     public function actionSearchCityBySpell($url)
     {
 
@@ -185,7 +183,6 @@ class ResidentnameController extends Controller
             'cacheDisabled' => false,
         ]);
     }
-
 
     public function actionSearchCityBySpellForm()
     {
