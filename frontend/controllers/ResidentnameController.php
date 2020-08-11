@@ -168,7 +168,7 @@ class ResidentnameController extends Controller
                 ->all();
         });
 
-        $this->view->title = "Города на букву " . $url->param;
+        $this->view->title = "Города на букву {$url->param} | Все города России и Мира на букву {$url->param} | Катойконим.РУ";
 
         \Yii::$app->view->registerMetaTag([
             'name' => 'description',
@@ -212,4 +212,44 @@ class ResidentnameController extends Controller
         ]);
     }
 
+
+    public function actionMainPage()
+    {
+        $cacheName = 'mainList';
+        $cache = \Yii::$app->cache;
+
+        $placesPopularCities = $cache->getOrSet('mainList_placesPopularCities', function () {
+
+            return $placesPopularCities = City::find()
+                ->where(['id' => [22, 26, 101, 111, 154, 193, 210, 279, 347, 404, 415, 436, 442, 449, 452, 463, 464, 471, 473, 477, 479, 486, 490, 502, 528, 530, 533, 535, 537, 543, 553, 564, 573, 578, 580, 597, 614, 650, 655, 660, 672, 688, 707, 711, 712, 713, 717, 719, 739, 746, 748, 750, 751, 752, 753, 761, 769, 777, 780, 785, 787, 790, 795, 796, 800, 802, 804, 805, 807, 816, 817, 826, 828, 865, 924, 958, 976, 1000, 1016]])
+                ->orderBy('name asc')
+                ->all();
+        });
+
+        $placesPopularCountries = $cache->getOrSet('mainList_placesPopularCountries', function () {
+
+            return $placesPopularCountries = Country::find()
+                ->where(['id' => [2, 18, 22, 33, 34, 47, 49, 51, 59, 60, 63, 71, 74, 77, 84, 85, 89, 92, 97, 102, 115, 122, 123, 125, 126, 127, 135, 138, 142, 145, 164, 172, 179, 185, 187, 188, 189, 198]])
+                ->orderBy('name asc')
+                ->all();
+        });
+
+        $this->view->title = "Как называют жителей городов мира";
+
+        \Yii::$app->view->registerMetaTag([
+            'name' => 'description',
+            'content' => "Как называют жителей городов мира",
+        ]);
+
+
+
+        return $this->render('index', [
+            'h1' => 'Катойконимы - названия жителей городов',
+            'placesPopularCities' => $placesPopularCities,
+            'placesPopularCountries' => $placesPopularCountries,
+            'country' => false,
+            'cacheName' => $cacheName . '_table',
+            'cacheEnabled' => false,
+        ]);
+    }
 }

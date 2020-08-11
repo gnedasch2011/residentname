@@ -55,6 +55,7 @@ return [
 
                 'countries' => 'residentname/countries-list',
                 'cities' => 'residentname/cities-list',
+                '' => 'residentname/main-page',
                 [
                     'class' => 'frontend\modules\url\components\SearchCityUrlRule',
                 ],
