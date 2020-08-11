@@ -29,7 +29,9 @@
     </ul>
 <?php endif; ?>
 
-<?php if ($this->beginCache($cacheName)): ?>
+<?php if ($this->beginCache($cacheName, [
+    'enabled' => $cacheDisabled,
+])): ?>
     <table class="table table-striped">
         <thead>
         <tr>
@@ -62,9 +64,9 @@
                         <img src="<?= $place->imgFlug; ?>"
                              alt="<?= $place->name; ?>"
                              width="16" height="16">
-                        <a href="<?= $place->url->url; ?>"><?= $place->name; ?></a>
+                        <a href="/<?= $place->url->url; ?>"><?= $place->name; ?></a>
                     <?php else: ?>
-                        <img src="<?= $place->imgFlug; ?>"
+                        <img src="/<?= $place->imgFlug; ?>"
                              alt="<?= $place->country->name; ?>"
                              width="16" height="16">
                         <a href="<?= $place->country->url->url; ?>"><?= $place->country->name; ?></a>

@@ -32,7 +32,7 @@ class ResidentnameController extends Controller
             $this->view->params['breadcrumbs'] = [
                 [
                     'label' => 'Города мира',
-                    'url' => 'cities',
+                    'url' => '/cities',
                 ],
             ];
 
@@ -46,7 +46,7 @@ class ResidentnameController extends Controller
             $this->view->params['breadcrumbs'] = [
                 [
                     'label' => 'Страны мира',
-                    'url' => 'countries',
+                    'url' => '/countries',
                 ]
             ];
         }
@@ -147,6 +147,7 @@ class ResidentnameController extends Controller
             'country' => false,
             'cacheName' => $cacheName . '_table',
             'cityGroupSpell' => $cityGroupSpell,
+            'cacheDisabled' => true,
         ]);
     }
 
@@ -181,38 +182,35 @@ class ResidentnameController extends Controller
             'h1' => "Как называют жителей городов на букву " . $url->param,
             'country' => false,
             'cacheName' => $cacheName,
+            'cacheDisabled' => true,
         ]);
     }
 
 
     public function actionSearchCityBySpellForm()
     {
-
         $searchModel = new SearchPlace();
         $val = \Yii::$app->request->post('url');
-//        Yii::$app->request->enableCookieValidation=false;
-//        Yii::$app->request->enableCookieValidation=false;
-//        $config['components']['request']['enableCookieValidation'] = false;
-//        $config['components']['request']['enableCsrfValidation'] = false;
 
         if ($searchModel->load(\Yii::$app->request->post()) && $searchModel->validate()) {
             $places = City::find()
                 ->orderBy('name asc')
-                ->where(['like', 'name', $searchModel->url])
+                ->where(['like', 'name', $searchModel->url . '%', false])
                 ->all();
         }
 
-        $this->view->title = "Поиск городов и стран";
+        $this->view->title = "Поиск городов и стран на буквы \"" . $searchModel->url . "\"";
 
         \Yii::$app->view->registerMetaTag([
             'name' => 'description',
-            'content' => "Поиск городов и стран",
+            'content' => "Поиск городов и стран на буквы \"" . $searchModel->url . "\"",
         ]);
 
         return $this->render('placesList', [
             'places' => $places,
-            'h1' => "Поиск городов",
+            'h1' => "Поиск городов и стран на буквы \"" . $searchModel->url . "\"",
             'country' => false,
+            'cacheDisabled' => false,
         ]);
     }
 

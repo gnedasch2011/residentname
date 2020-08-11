@@ -86,7 +86,7 @@ AppAsset::register($this);
             height: 350px;
             background-size: contain;
             width: 100%;"
-                 src="images\residentname\main\advertising.jpg" alt="">
+                 src="\images\residentname\main\advertising.jpg" alt="">
         </div>
     </div>
 
