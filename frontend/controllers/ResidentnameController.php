@@ -211,6 +211,7 @@ class ResidentnameController extends Controller
             'h1' => "Поиск городов и стран на буквы \"" . $searchModel->url . "\"",
             'country' => false,
             'cacheDisabled' => false,
+            'cacheName' => '',
         ]);
     }
 
