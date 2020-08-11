@@ -168,16 +168,16 @@ class ResidentnameController extends Controller
                 ->all();
         });
 
-        $this->view->title = "Как называют жителей городов на букву " . $url->param;
+        $this->view->title = "Города на букву " . $url->param;
 
         \Yii::$app->view->registerMetaTag([
             'name' => 'description',
-            'content' => "Как называют жителей городов на букву " . $url->param
+            'content' => "Города на букву " . $url->param
         ]);
 
         return $this->render('placesList', [
             'places' => $places,
-            'h1' => "Как называют жителей городов на букву " . $url->param,
+            'h1' => "Города на букву " . $url->param,
             'country' => false,
             'cacheName' => $cacheName,
             'cacheDisabled' => false,

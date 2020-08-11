@@ -76,6 +76,7 @@
 
     <?php if (isset($place->cities) && !empty($place->cities)): ?>
         <h2>Города <?= $place->genitive->value; ?></h2>
+    <div class="tableScroll">
         <table class="table table-striped">
             <thead>
             <tr>
@@ -97,7 +98,7 @@
             <?php endforeach; ?>
 
         </table>
-
+    </div>
     <?php endif; ?>
 
 
@@ -117,6 +118,27 @@
         </div>
 
     <?php endif; ?>
-
-
 </div>
+
+
+<style>
+    table {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    table th {
+        padding: 5px;
+    }
+
+    .liInline li {
+        display: inline-block;
+        padding-left: 5px;
+        font-size: 1.3em;
+    }
+
+    .tableScroll{
+        overflow-x: scroll;
+    }
+</style>
