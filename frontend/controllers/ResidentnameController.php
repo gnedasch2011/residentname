@@ -51,9 +51,9 @@ class ResidentnameController extends Controller
             ];
         }
 
+//        echo "<pre>"; print_r(City::randomCityInRussia());die();
 
         //Title:
-
         $this->view->title = "Как называют жителей {$place->genitive->value} | Правильное название жителей города {$place->genitive->value}";
 
         $siteName = \Yii::$app->params['siteName'];
@@ -110,7 +110,8 @@ class ResidentnameController extends Controller
             'places' => $places,
             'h1' => 'Названия жителей стран',
             'country' => true,
-            'cacheName' => $cacheName . '_table'
+            'cacheName' => $cacheName . '_table',
+            'cacheDisabled' => true,
         ]);
     }
 
@@ -175,7 +176,6 @@ class ResidentnameController extends Controller
             'name' => 'description',
             'content' => "Как называют жителей городов на букву " . $url->param
         ]);
-
 
         return $this->render('placesList', [
             'places' => $places,

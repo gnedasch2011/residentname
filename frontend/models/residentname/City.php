@@ -3,6 +3,7 @@
 namespace app\models\residentname;
 
 use Yii;
+use yii\helpers\Html;
 
 /**
  * This is the model class for table "city".
@@ -107,5 +108,58 @@ class City extends \yii\db\ActiveRecord
         return $this->hasOne(Country::className(), ['id' => 'country_id']);
     }
 
+    const ID_RUSSIA = 138;
+
+    public function isRussia()
+    {
+        if (isset($this->country->id) && $this->country->id == self::ID_RUSSIA) {
+            return true;
+        }
+        return false;
+    }
+
+    public static function randomCityInRussia()
+    {
+        $city = self::find()
+            ->where(['country_id' => self::ID_RUSSIA])
+            ->orderBy('rand()')
+            ->limit(1)
+            ->one();
+
+        if ($city) {
+            return $city;
+        }
+
+        return false;
+    }
+
+    public static function renderRandomCityLink()
+    {
+        $city = self::randomCityInRussia();
+        $link = Html::a($city->genitive->value, '/' . $city->url->url);
+
+        return $link;
+    }
+
+
+    public function getFirstLetterPlaceLink()
+    {
+        $firstLetter = mb_substr($this->name, 0, 1);
+
+        $url = Url::find()
+            ->where([
+                'route' => 'search-city',
+                'param' => $firstLetter,
+            ])
+            ->one();
+
+        if ($url) {
+
+          return  Html::a($firstLetter, '/' . $url->url);
+
+        }
+
+        return false;
+    }
 
 }

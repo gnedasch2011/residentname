@@ -24,7 +24,7 @@ AppAsset::register($this);
     <?php $this->registerCsrfMetaTags() ?>
     <?php
     $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/png', 'href' => \yii\helpers\Url::to(['/images/residentname/main/favicon.ico'])]);
-     ?>
+    ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
@@ -121,18 +121,17 @@ AppAsset::register($this);
         <?= $content ?>
     </div>
 </div>
-
-
-<?php $this->endBody() ?>
-
-<footer>
+<div class="container-fluid bg-secondary">
     <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-            <a href="/">katoikonim.ru</a> © Катойконим (ссылка на главную) - название жителей определенной страны, региона или города.
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-dark text-white text-center">
+            <a href="/">katoikonim.ru</a> © Катойконим (ссылка на главную) - название жителей
+            определенной страны, региона или города.
+
         </div>
     </div>
+</div>
 
-</footer>
+<?php $this->endBody() ?>
 
 </body>
 </html>
