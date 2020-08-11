@@ -12,31 +12,36 @@
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center">
             <h4><?= $place->man; ?></h4>
             <p>(<?= mb_strlen($place->man); ?> букв)</p>
-            <img width="80px" src="images\residentname\main\man.png" alt="">
+            <img width="80px" src="\images\residentname\main\man.png" alt="">
             <p>мужчина</p>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center">
             <h4><?= $place->woman; ?></h4>
             <p>(<?= mb_strlen($place->woman); ?> букв)</p>
-            <img width="100px" src="images\residentname\main\woman.png" alt="">
+            <img width="100px" src="\images\residentname\main\woman.png" alt="">
             <p>женщина</p>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center">
             <h4><?= $place->townspeople; ?></h4>
             <p>(<?= mb_strlen($place->townspeople); ?> букв)</p>
-            <img width="100px" src="images\residentname\main\many_people.png" alt="">
+            <img width="100px" src="\images\residentname\main\many_people.png" alt="">
             <p>горожане</p>
         </div>
 
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <p>
-                Интересный факт, у жительниц, которые проживают в
-                городе <?= $place->nominative->value; ?> нет официального катойконима. Поэтому самым
-                правильным вариантом названия будет: Жительница
-                города <?= $place->genitive->value; ?>
-            </p>
+        <?php if ($place->woman == ''): ?>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <p>
+                    Интересный факт, у жительниц, которые проживают в
+                    городе <?= $place->nominative->value; ?> нет официального катойконима. Поэтому
+                    самым
+                    правильным вариантом названия будет: Жительница
+                    города <?= $place->genitive->value; ?>
+                </p>
 
-        </div>
+            </div>
+        <?php endif; ?>
+
+
     </div>
 
     <table class="table table-striped">
@@ -101,10 +106,14 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h3>Возможно, вам интересно узнать название жителей других городов России:</h3>
 
-                <p>Как правильно называются жители города <?= \app\models\residentname\City::renderRandomCityLink();?>?</p>
+                <p>Как правильно называются жители
+                    города <?= \app\models\residentname\City::renderRandomCityLink(); ?>?</p>
 
-                <p>Название жителей городов на букву <?= $place->firstLetterPlaceLink;?> (Первая буква нашего города)
-                <p> Какой правильный катойконим у <?= \app\models\residentname\City::renderRandomCityLink();?> (вставляем рандомом ещё один другой город
+                <p>Название жителей городов на букву <?= $place->firstLetterPlaceLink; ?> (Первая
+                    буква нашего города)
+                <p> Какой правильный катойконим
+                    у <?= \app\models\residentname\City::renderRandomCityLink(); ?> (вставляем
+                    рандомом ещё один другой город
                     России)</p>
                 <p>Название жителей <a href="/cities">всех городов России</a></p>
             </div>

@@ -124,7 +124,7 @@ AppAsset::register($this);
 <div class="container-fluid bg-secondary">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-dark text-white text-center">
-            <a href="/">katoikonim.ru</a> © Катойконим (ссылка на главную) - название жителей
+            <a href="/">katoikonim.ru</a> © Катойконим - название жителей
             определенной страны, региона или города.
 
         </div>

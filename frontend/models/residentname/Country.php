@@ -69,6 +69,19 @@ class Country extends \yii\db\ActiveRecord
             ->where(['route' => 'country']);
     }
 
+
+    //Именительный падеж
+    public function getNominative()
+    {
+        return $this->hasOne(NounseValue::className(), ['item_id' => 'id'])
+            ->where([
+                'kinds_of_nouns_id' => 2,
+                'declines_nouns_id' => 1,
+                'cases_id' => 1,
+            ]);
+    }
+
+
     //Родительный падеж
     public function getGenitive()
     {
@@ -94,5 +107,15 @@ class Country extends \yii\db\ActiveRecord
     {
         return $this->name;
     }
+    const ID_RUSSIA = 138;
+
+    public function isRussia()
+    {
+        if (isset($this->country->id) && $this->country->id == self::ID_RUSSIA) {
+            return true;
+        }
+        return false;
+    }
+
 
 }
