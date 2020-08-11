@@ -22,6 +22,9 @@ AppAsset::register($this);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->registerCsrfMetaTags() ?>
+    <?php
+    $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/png', 'href' => \yii\helpers\Url::to(['/images/residentname/main/favicon.ico'])]);
+     ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
@@ -43,15 +46,23 @@ AppAsset::register($this);
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">Склонения жителей</a>
+                <a class="navbar-brand" href="/">Названия жителей</a>
             </div>
 
             <!-- Соберите навигационные ссылки, формы, и другой контент для переключения -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+                    <li class=""><a href="/countries">Планеты <span class="sr-only"></span></a>
+
+                    <li class=""><a href="/countries">Континенты <span class="sr-only"></span></a>
+
                     <li class=""><a href="/countries">Страны <span class="sr-only">(current)</span></a>
                     </li>
-                    <li><a href="/cities">Города</a></li>
+                    <li><a href="/cities">Города мира</a></li>
+                    <li><a href="/cities">Регионы РФ</a></li>
+                    <li><a href="/cities">Правила</a></li>
+
+
                 </ul>
                 <?php
 
@@ -97,9 +108,9 @@ AppAsset::register($this);
             // $this is the view object currently being used
             echo Breadcrumbs::widget([
                 'homeLink' => [
-                    'label' => 'Главная',
+                    'label' => 'Названия жителей',
                     'url' => Yii::$app->homeUrl,
-                    'title' => 'Главная',
+                    'title' => 'Названия жителей',
                 ],
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]);
@@ -113,6 +124,16 @@ AppAsset::register($this);
 
 
 <?php $this->endBody() ?>
+
+<footer>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+            <a href="/">katoikonim.ru</a> © Катойконим (ссылка на главную) - название жителей определенной страны, региона или города.
+        </div>
+    </div>
+
+</footer>
+
 </body>
 </html>
 <?php $this->endPage() ?>

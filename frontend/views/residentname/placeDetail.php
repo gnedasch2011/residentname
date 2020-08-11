@@ -1,4 +1,4 @@
-<h1>Название жителей <?= $place->genitive->value; ?> </h1>
+<h1>Названия жителей <?= $place->genitive->value; ?> </h1>
 
 <?php /*?>
 
@@ -24,6 +24,13 @@
         <p>(<?= mb_strlen($place->townspeople) ;?> букв)</p>
         <img width="100px" src="images\residentname\main\many_people.png" alt="">
         <p>горожане</p>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <p>
+            Интересный факт, у жительниц, которые проживают в городе <?= $place->nominative->value; ?> нет официального катойконима. Поэтому самым правильным вариантом названия будет: Жительница города <?= $place->genitive->value; ?>
+        </p>
+
     </div>
 </div>
 

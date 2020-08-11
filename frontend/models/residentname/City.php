@@ -79,6 +79,17 @@ class City extends \yii\db\ActiveRecord
             ]);
     }
 
+    //Именительный падеж
+    public function getNominative()
+    {
+        return $this->hasOne(NounseValue::className(), ['item_id' => 'id'])
+            ->where([
+                'kinds_of_nouns_id' => 2,
+                'declines_nouns_id' => 1,
+                'cases_id' => 1,
+            ]);
+    }
+
 
     public function getImgFlug()
     {

@@ -73,7 +73,6 @@
                     <?php endif; ?>
 
                 </td>
-
                 <td><?= $place->man; ?></td>
                 <td><?= $place->woman; ?></td>
                 <td><?= $place->townspeople; ?></td>
