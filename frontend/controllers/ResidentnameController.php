@@ -182,7 +182,7 @@ class ResidentnameController extends Controller
             'h1' => "Как называют жителей городов на букву " . $url->param,
             'country' => false,
             'cacheName' => $cacheName,
-            'cacheDisabled' => true,
+            'cacheDisabled' => false,
         ]);
     }
 

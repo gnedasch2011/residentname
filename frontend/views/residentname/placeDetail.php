@@ -109,12 +109,9 @@
                 <p>Как правильно называются жители
                     города <?= \app\models\residentname\City::renderRandomCityLink(); ?>?</p>
 
-                <p>Название жителей городов на букву <?= $place->firstLetterPlaceLink; ?> (Первая
-                    буква нашего города)
+                <p>Название жителей городов на букву <?= $place->firstLetterPlaceLink; ?>
                 <p> Какой правильный катойконим
-                    у <?= \app\models\residentname\City::renderRandomCityLink(); ?> (вставляем
-                    рандомом ещё один другой город
-                    России)</p>
+                    у <?= \app\models\residentname\City::renderRandomCityLink(); ?> </p>
                 <p>Название жителей <a href="/cities">всех городов России</a></p>
             </div>
         </div>

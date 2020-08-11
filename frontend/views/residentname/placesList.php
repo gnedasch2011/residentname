@@ -29,66 +29,66 @@
     </ul>
 <?php endif; ?>
 
-<?php if ($this->beginCache($cacheName, [
-    'enabled' => $cacheDisabled,
-])): ?>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>#</th>
-            <?php if (!$country): ?>
-                <th>Город</th>
-            <?php endif; ?>
-            <th>Страна</th>
-            <th>Мужчины</th>
-            <th>Женщины</th>
-            <th>Граждане</th>
-        </tr>
 
-        <tbody>
-        <?php
-        $count = 1;
-        ?>
-        <?php foreach ($places as $place): ?>
+    <?php if ($this->beginCache($cacheName, [
+        'enabled' => $cacheDisabled,
+    ])): ?>
+        <table class="table table-striped">
+            <thead>
             <tr>
-                <td class="text-muted small"><?= $count; ?></td>
-
-                <?php if (!$country && isset($place->url->url)): ?>
-                    <td>
-                        <a href="<?= $place->url->url; ?>"><?= $place->name; ?></a>
-                    </td>
+                <th>#</th>
+                <?php if (!$country): ?>
+                    <th>Город</th>
                 <?php endif; ?>
+                <th>Страна</th>
+                <th>Мужчины</th>
+                <th>Женщины</th>
+                <th>Граждане</th>
+            </tr>
 
-                <td>
-                    <?php if ($country): ?>
-                        <img src="<?= $place->imgFlug; ?>"
-                             alt="<?= $place->name; ?>"
-                             width="16" height="16">
-                        <a href="/<?= $place->url->url; ?>"><?= $place->name; ?></a>
-                    <?php else: ?>
-                        <img src="/<?= $place->imgFlug; ?>"
-                             alt="<?= $place->country->name; ?>"
-                             width="16" height="16">
-                        <a href="<?= $place->country->url->url; ?>"><?= $place->country->name; ?></a>
+            <tbody>
+            <?php
+            $count = 1;
+            ?>
+            <?php foreach ($places as $place): ?>
+                <tr>
+                    <td class="text-muted small"><?= $count; ?></td>
+
+                    <?php if (!$country && isset($place->url->url)): ?>
+                        <td>
+                            <a href="<?= $place->url->url; ?>"><?= $place->name; ?></a>
+                        </td>
                     <?php endif; ?>
 
-                </td>
-                <td><?= $place->man; ?></td>
-                <td><?= $place->woman; ?></td>
-                <td><?= $place->townspeople; ?></td>
-            </tr>
-            <?php
-            $count++;
-            ?>
-        <?php endforeach; ?>
+                    <td>
+                        <?php if ($country): ?>
+                            <img src="<?= $place->imgFlug; ?>"
+                                 alt="<?= $place->name; ?>"
+                                 width="16" height="16">
+                            <a href="/<?= $place->url->url; ?>"><?= $place->name; ?></a>
+                        <?php else: ?>
+                            <img src="/<?= $place->imgFlug; ?>"
+                                 alt="<?= $place->country->name; ?>"
+                                 width="16" height="16">
+                            <a href="<?= $place->country->url->url; ?>"><?= $place->country->name; ?></a>
+                        <?php endif; ?>
+
+                    </td>
+                    <td><?= $place->man; ?></td>
+                    <td><?= $place->woman; ?></td>
+                    <td><?= $place->townspeople; ?></td>
+                </tr>
+                <?php
+                $count++;
+                ?>
+            <?php endforeach; ?>
 
 
-        </tbody>
+            </tbody>
 
-        </thead>
-    </table>
-    <?php $this->endCache(); ?>
-<?php
-endif;
-?>
+            </thead>
+        </table>
+        <?php $this->endCache(); ?>
+
+<?php endif;?>
 
