@@ -26,7 +26,32 @@ AppAsset::register($this);
     $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/png', 'href' => \yii\helpers\Url::to(['/images/residentname/main/favicon.ico'])]);
     ?>
     <title><?= Html::encode($this->title) ?></title>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () {
+                (m[i].a = m[i].a || []).push(arguments)
+            };
+            m[i].l = 1 * new Date();
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(66377239, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true
+        });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/66377239" style="position:absolute; left:-9999px;"
+                  alt=""/></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
+
     <?php $this->head() ?>
+
 </head>
 <body>
 
@@ -52,17 +77,15 @@ AppAsset::register($this);
             <!-- Соберите навигационные ссылки, формы, и другой контент для переключения -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class=""><a href="/countries">Планеты <span class="sr-only"></span></a>
+                    <li class=""><a href="#">Планеты <span class="sr-only"></span></a>
 
-                    <li class=""><a href="/countries">Континенты <span class="sr-only"></span></a>
+                    <li class=""><a href="#">Континенты <span class="sr-only"></span></a>
 
                     <li class=""><a href="/countries">Страны <span class="sr-only">(current)</span></a>
                     </li>
                     <li><a href="/cities">Города мира</a></li>
-                    <li><a href="/cities">Регионы РФ</a></li>
-                    <li><a href="/cities">Правила</a></li>
-
-
+                    <li><a href="/cities-rf">Регионы РФ</a></li>
+                    <li><a href="#">Правила</a></li>
                 </ul>
                 <?php
 

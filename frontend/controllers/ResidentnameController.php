@@ -152,6 +152,39 @@ class ResidentnameController extends Controller
         ]);
     }
 
+    //Названия жителей городов РФ
+    public function actionCitiesRfList()
+    {
+        $cacheName = 'CitiesListRf';
+        $cache = \Yii::$app->cache;
+
+        $places = $cache->getOrSet($cacheName, function () {
+
+            return $places = City::find()
+                ->orderBy('name asc')
+                ->where(['country_id' => 138])
+                ->all();
+
+        });
+
+
+        $this->view->title = "Как называют жителей городов Российской Федерации";
+
+        \Yii::$app->view->registerMetaTag([
+            'name' => 'description',
+            'content' => "Как называют жителей городов Российской Федерации",
+        ]);
+
+
+        return $this->render('placesList', [
+            'places' => $places,
+            'h1' => 'Как называют жителей городов Российской Федерации',
+            'country' => false,
+            'cacheName' => $cacheName . '_table',
+            'cacheDisabled' => true,
+        ]);
+    }
+
     public function actionSearchCityBySpell($url)
     {
 
@@ -275,18 +308,13 @@ class ResidentnameController extends Controller
         ], $urls);
 
 
-        $xml_sitemap = $this->renderPartial('sitemap', array(
-            'host' => \Yii::$app->request->hostInfo,
-            'urls' => $urls,
-        ));
-
-        //        if (!$xml_sitemap = Yii::$app->cache->get('sitemap')) {
-//            $xml_sitemap = $this->renderPartial('sitemap', array( // записываем view на переменную для последующего кэширования
-//                'host' => Yii::$app->request->hostInfo,         // текущий домен сайта
-//                'urls' => $urls,                                // с генерированные ссылки для sitemap
-//            ));
-//            Yii::$app->cache->set('sitemap', $xml_sitemap, 60 * 60 * 12); // кэшируем результат на 12 ч
-//        }
+        if (!$xml_sitemap = Yii::$app->cache->get('sitemap')) {
+            $xml_sitemap = $this->renderPartial('sitemap', array(
+                'host' => \Yii::$app->request->hostInfo,
+                'urls' => $urls,
+            ));
+            Yii::$app->cache->set('sitemap', $xml_sitemap, 60 * 60 * 12); // кэшируем результат на 12 ч
+        }
 
 
         \Yii::$app->response->format = \yii\web\Response::FORMAT_RAW;

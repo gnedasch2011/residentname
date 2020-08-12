@@ -33,7 +33,6 @@
             <?php endforeach; ?>
         </ul>
     <?php endif; ?>
-
     <?php if ($this->beginCache($cacheName, [
         'enabled' => $cacheDisabled,
     ])): ?>

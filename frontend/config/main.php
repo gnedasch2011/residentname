@@ -56,6 +56,7 @@ return [
 
                 'countries' => 'residentname/countries-list',
                 'cities' => 'residentname/cities-list',
+                'cities-rf' => 'residentname/cities-rf-list',
                 'sitemap.xml' => 'residentname/sitemap-xml',
 
                 [
