@@ -57,7 +57,7 @@ class ResidentnameController extends Controller
         //Title:
         $this->view->title = "Как называют жителей {$place->genitive->value} | Правильное название жителей города {$place->genitive->value}";
 
-        $siteName = \Yii::$app->params['siteName'];
+        $siteName = \Yii::$app->request->hostInfo;
 
         \Yii::$app->view->registerMetaTag([
             'name' => 'description',
