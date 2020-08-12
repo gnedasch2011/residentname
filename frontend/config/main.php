@@ -53,16 +53,11 @@ return [
             'showScriptName' => false,
             'rules' => [
                 '' => 'residentname/main-page',
-<<<<<<< HEAD
 
-                'countries' => 'residentname/countries-list',
-                'cities' => 'residentname/cities-list',
-=======
                 'countries' => 'residentname/countries-list',
                 'cities' => 'residentname/cities-list',
                 'sitemap.xml' => 'residentname/sitemap-xml',
 
->>>>>>> 9195b6c481c31042c3de54aec93d97fba0b124f4
                 [
                     'class' => 'frontend\modules\url\components\SearchCityUrlRule',
                 ],
