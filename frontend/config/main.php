@@ -52,10 +52,11 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-
+                '' => 'residentname/main-page',
                 'countries' => 'residentname/countries-list',
                 'cities' => 'residentname/cities-list',
-                '' => 'residentname/main-page',
+                'sitemap.xml' => 'residentname/sitemap-xml',
+
                 [
                     'class' => 'frontend\modules\url\components\SearchCityUrlRule',
                 ],

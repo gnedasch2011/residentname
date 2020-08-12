@@ -17,6 +17,7 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\BaseInflector;
 use yii\helpers\Url;
 use yii\web\Controller;
+use Yii;
 
 class ResidentnameController extends Controller
 {
@@ -242,7 +243,6 @@ class ResidentnameController extends Controller
         ]);
 
 
-
         return $this->render('index', [
             'h1' => 'Катойконимы - названия жителей городов',
             'placesPopularCities' => $placesPopularCities,
@@ -251,5 +251,40 @@ class ResidentnameController extends Controller
             'cacheName' => $cacheName . '_table',
             'cacheEnabled' => false,
         ]);
+    }
+
+    public function actionSitemapXml()
+    {
+
+        $urls = [];
+
+        foreach (\app\models\residentname\Url::find()->all() as $url) {
+            $urls[] = array(
+                'loc' => $url->url,
+                'changefreq' => 'weekly',
+                'priority' => 1,
+            );
+        }
+
+
+        $xml_sitemap = $this->renderPartial('sitemap', array(
+            'host' => \Yii::$app->request->hostInfo,
+            'urls' => $urls,
+        ));
+
+     //        if (!$xml_sitemap = Yii::$app->cache->get('sitemap')) {
+//            $xml_sitemap = $this->renderPartial('sitemap', array( // записываем view на переменную для последующего кэширования
+//                'host' => Yii::$app->request->hostInfo,         // текущий домен сайта
+//                'urls' => $urls,                                // с генерированные ссылки для sitemap
+//            ));
+//            Yii::$app->cache->set('sitemap', $xml_sitemap, 60 * 60 * 12); // кэшируем результат на 12 ч
+//        }
+
+
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_RAW;
+        $headers = Yii::$app->response->headers;
+        $headers->add('Content-Type', 'text/xml');
+
+        return $xml_sitemap;
     }
 }
