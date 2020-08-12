@@ -139,5 +139,10 @@ class Country extends \yii\db\ActiveRecord
         return false;
     }
 
-
+    
+    
+     public function getCountryInfoForMask()
+         {
+             return $this->hasOne(CountryInfoForMask::className(), ['country_id' => 'id']);
+         }
 }

@@ -25,6 +25,8 @@ class ResidentnameController extends Controller
     public function actionPlaceView($url)
     {
 
+        $country = false;
+
         if ($url->route == 'city') {
             $place = City::find()
                 ->where(['city.id' => $url->param])
@@ -36,7 +38,7 @@ class ResidentnameController extends Controller
                     'url' => '/cities',
                 ],
             ];
-
+            $country = false;
         }
 
         if ($url->route == 'country') {
@@ -50,6 +52,7 @@ class ResidentnameController extends Controller
                     'url' => '/countries',
                 ]
             ];
+            $country = true;
         }
 
 //        echo "<pre>"; print_r(City::randomCityInRussia());die();
@@ -81,6 +84,7 @@ class ResidentnameController extends Controller
         return $this->render('placeDetail', [
             'place' => $place,
             'nounsesGroup' => $nounsesGroup,
+            'country' => $country
         ]);
     }
 

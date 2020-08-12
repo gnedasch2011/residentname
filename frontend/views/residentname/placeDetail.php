@@ -2,11 +2,29 @@
     <h1>Названия жителей <?= $place->genitive->value; ?> </h1>
 </div>
 
-<?php /*?>
 
-<p>Страна Австрия имеет полное официальное название Австрийская Республика и буквенные коды AT и
-    AUT. Официальные названия граждан <?= $place->genitive->value; ?>:</p>
-<?php */ ?>
+<?php if ($country): ?>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <?php
+        $countryInfoForMask = $place->countryInfoForMask;
+        ?>
+
+        Государство <?= $countryInfoForMask->country_name; ?>
+        (<?= $countryInfoForMask->title_in_english; ?>) Полное наименование
+        - <?= $countryInfoForMask->full_name; ?> находится в регионе
+        <?= $countryInfoForMask->location; ?> (В части
+        света <?= $countryInfoForMask->part_of_the_world; ?>) и имеет буквенные
+        коды <?= $countryInfoForMask->character_code_2; ?>
+        и <?= $countryInfoForMask->character_code_3; ?> (Код ISO
+        - <?= $countryInfoForMask->iso_code; ?>).
+
+        Столица государства <?= $countryInfoForMask->country_name; ?>
+        - <?= $countryInfoForMask->capital; ?>, язык (языки), на котором говорят
+        жители <?= $place->genitive->value; ?>: <?= $countryInfoForMask->language; ?>.
+    </div>
+<?php endif; ?>
+
+
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center">
@@ -102,7 +120,6 @@
         </div>
     <?php endif; ?>
 
-
     <?php if ($place->isRussia()): ?>
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -128,10 +145,10 @@
 
                 <p> Правильное название проживающих в
                     городе <?= \app\models\residentname\City::renderRandomCityLink(); ?></p>
-                <?php if($place->firstLetterPlaceLink):?>
+                <?php if ($place->firstLetterPlaceLink): ?>
                     <p> Список всех городов и их жителей на
                         букву <?= $place->firstLetterPlaceLink; ?></p>
-                <?php endif;?>
+                <?php endif; ?>
 
             </div>
         </div>

@@ -1,3 +1,47 @@
+GET http://katoikonim.loc/zhiteli-avstralii
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+SearchPlace%5Burl%5D=%D0%A0%D0%B0
+
+<> 2020-08-12T025244.200.html
+
+###
+
+GET http://katoikonim.loc/zhiteli-avstralii
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+SearchPlace%5Burl%5D=%D0%A0%D0%B0
+
+<> 2020-08-12T025232.200.html
+
+###
+
+GET http://katoikonim.loc/zhiteli-avstralii
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+SearchPlace%5Burl%5D=%D0%A0%D0%B0
+
+<> 2020-08-12T024907.200.html
+
+###
+
+GET http://katoikonim.loc/zhiteli-avstralii
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+SearchPlace%5Burl%5D=%D0%A0%D0%B0
+
+<> 2020-08-12T024610.200.html
+
+###
+
 GET http://katoikonim.loc/cities-rf
 Accept: */*
 Cache-Control: no-cache
@@ -501,50 +545,6 @@ Content-Type: application/x-www-form-urlencoded
 SearchPlace%5Burl%5D=%D0%A0%D0%B0
 
 <> 2020-08-11T121537-1.200.html
-
-###
-
-POST http://katoikonim.loc/zhiteli-azova
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/x-www-form-urlencoded
-
-SearchPlace%5Burl%5D=%D0%A0%D0%B0
-
-<> 2020-08-11T121537.200.html
-
-###
-
-POST http://katoikonim.loc/zhiteli-azova
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/x-www-form-urlencoded
-
-SearchPlace%5Burl%5D=%D0%A0%D0%B0
-
-<> 2020-08-11T121536.200.html
-
-###
-
-POST http://katoikonim.loc/zhiteli-azova
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/x-www-form-urlencoded
-
-SearchPlace%5Burl%5D=%D0%A0%D0%B0
-
-<> 2020-08-11T121535.200.html
-
-###
-
-POST http://katoikonim.loc/zhiteli-azova
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/x-www-form-urlencoded
-
-SearchPlace%5Burl%5D=%D0%A0%D0%B0
-
-<> 2020-08-11T121512.200.html
 
 ###
 
