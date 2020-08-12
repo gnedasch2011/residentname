@@ -109,12 +109,30 @@
                 <h3>Возможно, вам интересно узнать название жителей других городов России:</h3>
 
                 <p>Как правильно называются жители
-                    города <?= \app\models\residentname\City::renderRandomCityLink(); ?>?</p>
+                    города <?= \app\models\residentname\City::renderRandomCityInRussiaLink(); ?>
+                    ?</p>
 
                 <p>Название жителей городов на букву <?= $place->firstLetterPlaceLink; ?>
                 <p> Какой правильный катойконим
-                    у <?= \app\models\residentname\City::renderRandomCityLink(); ?> </p>
+                    у <?= \app\models\residentname\City::renderRandomCityInRussiaLink(); ?> </p>
                 <p>Название жителей <a href="/cities">всех городов России</a></p>
+            </div>
+        </div>
+    <?php else: ?>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h3> Хотите знать ещё больше?</h3>
+
+                <p>Как правильно называются жители
+                    <?= \app\models\residentname\City::renderRandomCityLink(); ?>?</p>
+
+                <p> Правильное название проживающих в
+                    городе <?= \app\models\residentname\City::renderRandomCityLink(); ?></p>
+                <?php if($place->firstLetterPlaceLink):?>
+                    <p> Список всех городов и их жителей на
+                        букву <?= $place->firstLetterPlaceLink; ?></p>
+                <?php endif;?>
+
             </div>
         </div>
 

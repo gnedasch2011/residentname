@@ -133,11 +133,41 @@ class City extends \yii\db\ActiveRecord
         return false;
     }
 
-    public static function renderRandomCityLink()
+
+    public static function randomCity()
+    {
+        $city = self::find()
+            ->orderBy('rand()')
+            ->limit(1)
+            ->one();
+
+        if ($city) {
+            return $city;
+        }
+
+        return false;
+    }
+
+
+    public static function renderRandomCityInRussiaLink()
     {
         $city = self::randomCityInRussia();
-        $link = Html::a($city->genitive->value, '/' . $city->url->url);
 
+        return self::renderHTMLLink($city);
+    }
+
+
+    public static function renderRandomCityLink()
+    {
+        $city = self::randomCity();
+
+        return self::renderHTMLLink($city);
+    }
+
+
+    public static function renderHTMLLink($city)
+    {
+        $link = Html::a($city->genitive->value, '/' . $city->url->url);
         return $link;
     }
 
@@ -155,7 +185,7 @@ class City extends \yii\db\ActiveRecord
 
         if ($url) {
 
-          return  Html::a($firstLetter, '/' . $url->url);
+            return Html::a($firstLetter, '/' . $url->url);
 
         }
 

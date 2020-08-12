@@ -2,6 +2,8 @@
 
 namespace app\models\residentname;
 
+use yii\helpers\Html;
+
 /**
  * This is the model class for table "country".
  *
@@ -114,6 +116,26 @@ class Country extends \yii\db\ActiveRecord
         if (isset($this->country->id) && $this->country->id == self::ID_RUSSIA) {
             return true;
         }
+        return false;
+    }
+
+    public function getFirstLetterPlaceLink()
+    {
+        $firstLetter = mb_substr($this->name, 0, 1);
+
+        $url = Url::find()
+            ->where([
+                'route' => 'search-city',
+                'param' => $firstLetter,
+            ])
+            ->one();
+
+        if ($url) {
+
+            return Html::a($firstLetter, '/' . $url->url);
+
+        }
+
         return false;
     }
 
