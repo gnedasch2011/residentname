@@ -38,6 +38,16 @@ class ResidentnameController extends Controller
                     'url' => '/cities',
                 ],
             ];
+
+            if(isset($place->country)){
+                $this->view->params['breadcrumbs'] = [
+                    [
+                        'label' =>$place->country->name,
+                        'url' => $place->country->url->url,
+                    ],
+                ];
+            }
+
             $country = false;
         }
 
@@ -55,7 +65,6 @@ class ResidentnameController extends Controller
             $country = true;
         }
 
-//        echo "<pre>"; print_r(City::randomCityInRussia());die();
 
         //Title:
         $this->view->title = "Как называют жителей {$place->genitive->value} | Правильное название жителей города {$place->genitive->value}";
@@ -66,6 +75,7 @@ class ResidentnameController extends Controller
             'name' => 'description',
             'content' => "Как называют жителей {$place->genitive->value} | Официальные названия на сайте {$siteName}",
         ]);
+
 
         $this->view->params['breadcrumbs'][] = [
             'label' => $place->name,
