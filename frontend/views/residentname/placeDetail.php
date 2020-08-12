@@ -22,6 +22,16 @@
         - <?= $countryInfoForMask->capital; ?>, язык (языки), на котором говорят
         жители <?= $place->genitive->value; ?>: <?= $countryInfoForMask->language; ?>.
     </div>
+
+
+<?php elseif (isset($place->country)): ?>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <?= $place->nominative->value; ?> - город, расположенный
+        во <?= $place->country->genitive->value; ?>. Официальные названия местных жителей и
+        жительниц <?= $place->genitive->value; ?> в разных склонениях, числах и падежах:
+    </div>
+
+
 <?php endif; ?>
 
 
