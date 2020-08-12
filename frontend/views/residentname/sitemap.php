@@ -6,7 +6,7 @@ foreach ($urls as $url) {
     echo '<url>
                 <loc>' . $host . '/' . $url['loc'] . '</loc>
                 <changefreq>daily</changefreq>
-                <priority>0.5</priority>
+                <priority>' . $url['priority'] . '</priority>
             </url>';
 }
 echo '</urlset>';

@@ -262,9 +262,17 @@ class ResidentnameController extends Controller
             $urls[] = array(
                 'loc' => $url->url,
                 'changefreq' => 'weekly',
-                'priority' => 1,
+                'priority' => 0.9,
             );
         }
+
+        $urls = array_merge([
+            [
+                'loc' => '/',
+                'changefreq' => 'weekly',
+                'priority' => 1,
+            ]
+        ], $urls);
 
 
         $xml_sitemap = $this->renderPartial('sitemap', array(
@@ -272,7 +280,7 @@ class ResidentnameController extends Controller
             'urls' => $urls,
         ));
 
-     //        if (!$xml_sitemap = Yii::$app->cache->get('sitemap')) {
+        //        if (!$xml_sitemap = Yii::$app->cache->get('sitemap')) {
 //            $xml_sitemap = $this->renderPartial('sitemap', array( // записываем view на переменную для последующего кэширования
 //                'host' => Yii::$app->request->hostInfo,         // текущий домен сайта
 //                'urls' => $urls,                                // с генерированные ссылки для sitemap

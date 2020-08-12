@@ -5,6 +5,50 @@ Content-Type: application/x-www-form-urlencoded
 
 SearchPlace%5Burl%5D=%D0%A0%D0%B0
 
+<> 2020-08-12T095943.200.html
+
+###
+
+GET http://katoikonim.loc/sitemap.xml
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+SearchPlace%5Burl%5D=%D0%A0%D0%B0
+
+<> 2020-08-12T095923.200.html
+
+###
+
+GET http://katoikonim.loc/sitemap.xml
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+SearchPlace%5Burl%5D=%D0%A0%D0%B0
+
+<> 2020-08-12T095900.200.html
+
+###
+
+GET http://katoikonim.loc/sitemap.xml
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+SearchPlace%5Burl%5D=%D0%A0%D0%B0
+
+<> 2020-08-12T095859.200.html
+
+###
+
+GET http://katoikonim.loc/sitemap.xml
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/x-www-form-urlencoded
+
+SearchPlace%5Burl%5D=%D0%A0%D0%B0
+
 <> 2020-08-12T090621.200.html
 
 ###
@@ -501,50 +545,6 @@ Content-Type: application/x-www-form-urlencoded
 SearchPlace%5Burl%5D=%D0%A0%D0%B0
 
 <> 2020-08-11T121510.200.html
-
-###
-
-POST http://katoikonim.loc/zhiteli-azova
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/x-www-form-urlencoded
-
-SearchPlace%5Burl%5D=%D0%A0%D0%B0
-
-<> 2020-08-11T121509.200.html
-
-###
-
-POST http://katoikonim.loc/zhiteli-azova
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/x-www-form-urlencoded
-
-SearchPlace%5Burl%5D=%D0%A0%D0%B0
-
-<> 2020-08-11T121508.200.html
-
-###
-
-POST http://katoikonim.loc/zhiteli-azova
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/x-www-form-urlencoded
-
-SearchPlace%5Burl%5D=%D0%A0%D0%B0
-
-<> 2020-08-11T121503.200.html
-
-###
-
-POST http://katoikonim.loc/zhiteli-azova
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/x-www-form-urlencoded
-
-SearchPlace%5Burl%5D=%D0%A0%D0%B0
-
-<> 2020-08-11T121016-1.200.html
 
 ###
 
