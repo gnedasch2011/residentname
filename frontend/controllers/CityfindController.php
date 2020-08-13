@@ -63,6 +63,33 @@ class CityfindController extends ActiveController
             ]
         ];
     }
+    
+    public function actionSpell($spell)
+    {
+        
+        echo "<pre>"; print_r($spell);die();
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+        $items = [
+            [
+                'id' => '1',
+                'name' => 'Product 1',
+                'proce' => 123,
+            ],
+            [
+                'id' => '2',
+                'name' => 'Product 2',
+                'proce' => 321,
+            ],
+            [
+                'id' => '5',
+                'name' => 'Product 5',
+                'proce' => 500,
+            ],
+        ];
+        return $items;
+        echo "<pre>"; print_r($spell);die();
+    }
 
 }
 

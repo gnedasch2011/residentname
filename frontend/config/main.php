@@ -62,14 +62,13 @@ return [
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'cityfind',
-                    'except' => ['delete'],
                     'pluralize' => false,
                     //отключаем преобразование во множественную форму
                 ],
 
+                'cityfind/spell/<spell:\D+>' => 'cityfind/spell',
+
                 '' => 'residentname/main-page',
-
-
                 'countries' => 'residentname/countries-list',
                 'cities' => 'residentname/cities-list',
                 'cities-rf' => 'residentname/cities-rf-list',
