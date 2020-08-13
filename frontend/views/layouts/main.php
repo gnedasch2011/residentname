@@ -23,7 +23,7 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->registerCsrfMetaTags() ?>
     <?php
-    $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/png', 'href' => \yii\helpers\Url::to(['/images/residentname/main/favicon.ico'])]);
+    $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => \yii\helpers\Url::to(['/images/residentname/main/favicon.ico'])]);
     ?>
     <title><?= Html::encode($this->title) ?></title>
     <!-- Yandex.Metrika counter -->

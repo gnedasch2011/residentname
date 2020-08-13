@@ -23,6 +23,10 @@ return [
     ],
     'components' => [
         'request' => [
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ],
+
             'csrfParam' => '_csrf-frontend',
             'enableCsrfValidation' => false,
         ],
@@ -49,10 +53,22 @@ return [
         ],
 
         'urlManager' => [
+
             'enablePrettyUrl' => true,
+            'enableStrictParsing' => true,
             'showScriptName' => false,
+
             'rules' => [
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'cityfind',
+                    'except' => ['delete'],
+                    'pluralize' => false,
+                    //отключаем преобразование во множественную форму
+                ],
+
                 '' => 'residentname/main-page',
+
 
                 'countries' => 'residentname/countries-list',
                 'cities' => 'residentname/cities-list',
@@ -62,6 +78,7 @@ return [
                 [
                     'class' => 'frontend\modules\url\components\SearchCityUrlRule',
                 ],
+
                 [
                     'class' => 'frontend\modules\url\components\CountryUrlRule',
                 ],

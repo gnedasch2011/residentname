@@ -3,6 +3,11 @@
     RewriteEngine On
 </IfModule>
 
+<Limit GET POST PUT DELETE>
+    Order allow,deny
+    Allow from all
+</Limit>
+
 <IfModule mod_rewrite.c>
     # deal with admin first
     RewriteCond %{REQUEST_URI} ^/(admin)
