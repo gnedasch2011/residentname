@@ -117,7 +117,6 @@ AppAsset::register($this);
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <img style="
-            height: 350px;
             background-size: contain;
             width: 100%;"
                  src="\images\residentname\main\advertising.jpg" alt="">
