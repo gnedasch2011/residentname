@@ -8,7 +8,7 @@ $mainBread = [
 
 $itemsLtd = array_merge($mainBread, $items);
 
-$countItems = count($items);
+$countItems = count($items) + 1;
 $i = 1;
 $jsonLtdItem = '';
 
