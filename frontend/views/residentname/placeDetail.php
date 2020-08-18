@@ -166,6 +166,12 @@
     <?php endif; ?>
 </div>
 
+<?php
+echo common\widgets\micromark\MicromarkWidget::widget([
+    'items' => $this->params['breadcrumbs'],
+    'template' => 'breadcrubs',
+]);
+?>
 
 <style>
     table {
