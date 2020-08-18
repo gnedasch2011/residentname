@@ -10,6 +10,7 @@ $itemsLtd = array_merge($mainBread, $items);
 
 $countItems = count($items);
 $i = 1;
+$jsonLtdItem = '';
 
 foreach ($itemsLtd as $item) {
     $url = (isset($item['url'])) ? $item['url'] : '#';
