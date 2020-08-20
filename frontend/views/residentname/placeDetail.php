@@ -38,8 +38,8 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <p> По данным на 1 января 2019 население <?= number_format($place->populate, 0, ',', ' '); ?>
-                    составляет <?= $place->populate; ?> человек (<?= $place->percent_populate; ?>%
+                <p> По данным на 1 января 2019 население <?= $place->genitive->value ;?>
+                    составляет <?= number_format($place->populate, 0, ',', ' '); ?> человек (<?= $place->percent_populate; ?>%
                     от населения Земли). Их официально называют:</p>
             </div>
         </div>
