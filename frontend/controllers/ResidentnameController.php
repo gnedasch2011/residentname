@@ -315,7 +315,7 @@ class ResidentnameController extends Controller
 
         $urls = array_merge([
             [
-                'loc' => '/',
+                'loc' => '',
                 'changefreq' => 'weekly',
                 'priority' => 1,
             ]
