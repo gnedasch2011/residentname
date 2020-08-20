@@ -158,6 +158,11 @@
                 <?php if ($place->firstLetterPlaceLink): ?>
                     <p> Список всех городов и их жителей на
                         букву <?= $place->firstLetterPlaceLink; ?></p>
+                    <p>
+
+                        Этнoxopoнимы (Этникoны) жителей <?= \app\models\residentname\Country::renderRandomPlaceLink(); ?>
+                    </p>
+
                 <?php endif; ?>
 
             </div>

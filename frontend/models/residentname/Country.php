@@ -138,11 +138,40 @@ class Country extends \yii\db\ActiveRecord
 
         return false;
     }
-
     
     
      public function getCountryInfoForMask()
          {
              return $this->hasOne(CountryInfoForMask::className(), ['country_id' => 'id']);
          }
+
+
+    public static function randomPlace()
+    {
+        $place = self::find()
+            ->orderBy('rand()')
+            ->limit(1)
+            ->one();
+
+        if ($place) {
+            return $place;
+        }
+
+        return false;
+    }
+
+    public static function renderHTMLLink($place)
+    {
+        $link = Html::a($place->genitive->value, '/' . $place->url->url);
+        return $link;
+    }
+
+    public static function renderRandomPlaceLink()
+    {
+        $place = self::randomPlace();
+
+        return self::renderHTMLLink($place);
+    }
+
+
 }
