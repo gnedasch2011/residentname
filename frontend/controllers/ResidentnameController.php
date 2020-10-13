@@ -109,6 +109,13 @@ class ResidentnameController extends Controller
         });
 
 
+        $this->view->params['breadcrumbs'] = [
+            [
+                'label' => 'Страны мира',
+                'url' => '/countries',
+            ]
+        ];
+
         //Title:
 
         $this->view->title = "Как называют жителей стран мира";
@@ -149,6 +156,14 @@ class ResidentnameController extends Controller
             'name' => 'description',
             'content' => "Как называют жителей городов мира",
         ]);
+
+
+        $this->view->params['breadcrumbs'] = [
+            [
+                'label' => 'Как называют жителей городов',
+                'url' => '/countries',
+            ]
+        ];
 
         $citySpell = \app\models\residentname\Url::find()
             ->where(['route' => 'search-city'])
