@@ -156,10 +156,13 @@ AppAsset::register($this);
             ]);
             ?>
             <?php
-            echo common\widgets\micromark\MicromarkWidget::widget([
-                'items' => $this->params['breadcrumbs'],
-                'template' => 'breadcrubs',
-            ]);
+            if(isset($this->params['breadcrumbs'])){
+                echo common\widgets\micromark\MicromarkWidget::widget([
+                    'items' => $this->params['breadcrumbs'],
+                    'template' => 'breadcrubs',
+                ]);
+            }
+
             ?>
         </div>
 
