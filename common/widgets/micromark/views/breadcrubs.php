@@ -5,7 +5,9 @@ $mainBread = [
         'url' => '/',
     ]
 ];
-
+if(!isset($items)){
+    $items = [];
+}
 $itemsLtd = array_merge($mainBread, $items);
 
 $countItems = count($items) + 1;
