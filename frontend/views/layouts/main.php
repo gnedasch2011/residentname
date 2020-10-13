@@ -155,7 +155,14 @@ AppAsset::register($this);
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]);
             ?>
+            <?php
+            echo common\widgets\micromark\MicromarkWidget::widget([
+                'items' => $this->params['breadcrumbs'],
+                'template' => 'breadcrubs',
+            ]);
+            ?>
         </div>
+
     </div>
     <div class="row">
         <?= $content ?>
@@ -168,9 +175,9 @@ AppAsset::register($this);
             <!-- Yandex.RTB R-A-619913-1 -->
             <div id="yandex_rtb_R-A-619913-1"></div>
             <script type="text/javascript">
-                (function(w, d, n, s, t) {
+                (function (w, d, n, s, t) {
                     w[n] = w[n] || [];
-                    w[n].push(function() {
+                    w[n].push(function () {
                         Ya.Context.AdvManager.render({
                             blockId: "R-A-619913-1",
                             renderTo: "yandex_rtb_R-A-619913-1",

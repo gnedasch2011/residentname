@@ -67,6 +67,7 @@ return [
                 ],
 
                 'cityfind/spell/<spell:\D+>' => 'cityfind/spell',
+                'residentname/search-city-by-spell-form' => 'residentname/search-city-by-spell-form',
 
                 '' => 'residentname/main-page',
                 'countries' => 'residentname/countries-list',
