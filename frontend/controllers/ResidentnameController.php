@@ -250,9 +250,9 @@ class ResidentnameController extends Controller
     public function actionSearchCityBySpellForm()
     {
         $searchModel = new SearchPlace();
-        $val = \Yii::$app->request->post('url');
-
+   
         if ($searchModel->load(\Yii::$app->request->post()) && $searchModel->validate()) {
+
             $places = City::find()
                 ->orderBy('name asc')
                 ->where(['like', 'name', $searchModel->url . '%', false])
